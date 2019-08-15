@@ -18,12 +18,27 @@ var divide = function (number1, number2) {
 
 
 $(document).ready(function(){
-  $("form#add").submit(function(event){
+  $("form#calculator").submit(function(event){
 
-  event.preventDefault();
-  var number1 = parseInt($("#add1").val());
-  var number2 = parseInt($("#add2").val());
-  alert(add(number1, number2));
+  var number1 = parseFloat($("#input1").val());
+  var number2 = parseFloat($("#input2").val());
+  var operator = $("input:radio[name=operator]:checked").val();
+
+
+
+  if(operator==="add"){
+    result = add(number1, number2);
+   } else if (operator === "subtract") {
+     result = subtract(number1, number2);
+   } else if (operator === "multiply") {
+     result = multiply(number1, number2);
+   } else if (operator === "divide") {
+     result = divide(number1, number2);
+   }
+   $("#output").text(result);
+
+  console.log(result);
+    event.preventDefault();
 
 });
 });
